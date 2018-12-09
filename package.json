@@ -1,0 +1,26 @@
+{
+  "name": "advent-of-code-2018",
+  "version": "1.0.0",
+  "description": "",
+  "main": "01.js",
+  "private": true,
+  "dependencies": {
+    "nodemon": "^1.18.7"
+  },
+  "devDependencies": {
+    "@types/node": "^10.12.12",
+    "ts-node": "^7.0.1",
+    "tslint": "^5.11.0",
+    "typescript": "^3.2.2"
+  },
+  "scripts": {
+    "//start": "nodemon --exec 'ts-node' src/01.ts",
+    "start": "npm run build:live",
+    "build": "tsc -p .",
+    "build:live": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/01.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
