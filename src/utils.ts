@@ -4,15 +4,18 @@
 // import fs from 'fs';
 import * as fs from 'fs';
 
-function readInput(path: string): string[] {
+function readInputFromFile(path: string): string {
   const fullpath = `./src/${path}.input.txt`;
-  const inputs = fs
+  const input = fs
     .readFileSync(fullpath)
     .toString()
-    .split('\n')
-    .filter(el => el !== '');
+    .trim();
+  return input;
+}
 
-  return inputs;
+function formatInputString(input: string): string[] {
+  const formattedInput = input.replace(/ /g, '').split(/,|\n|\r\n/g);
+  return formattedInput;
 }
 
 // function _getCallerFile2() {
@@ -63,4 +66,4 @@ function readInput(path: string): string[] {
 //   return callerfile;
 // }
 
-export { readInput };
+export { readInputFromFile, formatInputString };
