@@ -1,5 +1,3 @@
-// @ts-ignore
-
 // https://stackoverflow.com/a/50661511
 // import fs from 'fs';
 import * as fs from 'fs';

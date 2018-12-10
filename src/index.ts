@@ -1,4 +1,4 @@
-import * as main from './01';
+import * as main from './02';
 
-const result = main.calculateFirstDuplicatedFrequency();
+const result = main.calculateChecksum();
 console.log(`The result is ${result}`);
