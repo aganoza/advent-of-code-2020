@@ -18,6 +18,20 @@ function formatInputString(input: string, splitRegEx?: RegExp): string[] {
   return formattedInput;
 }
 
+/**
+ * Respect inner spaces
+ */
+
+function formatInputStringComplete(
+  input: string,
+  splitRegEx?: RegExp
+): string[] {
+  let regex: RegExp = splitRegEx === undefined ? /,|\n|\r\n/g : splitRegEx;
+
+  const formattedInput = input.split(regex);
+  return formattedInput;
+}
+
 // function _getCallerFile2() {
 //   try {
 //     let err = new Error();
@@ -66,4 +80,4 @@ function formatInputString(input: string, splitRegEx?: RegExp): string[] {
 //   return callerfile;
 // }
 
-export { readInputFromFile, formatInputString };
+export { readInputFromFile, formatInputString, formatInputStringComplete };
