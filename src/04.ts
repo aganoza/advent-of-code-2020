@@ -176,4 +176,79 @@ function getGuardIDMultipliedByMinute(
   return choosenId * minuteAsleepTheMostByGuard;
 }
 
-export { getGuardIDMultipliedByMinute };
+// 2nd part
+
+function getGuardIDMultipliedByMinuteAlternative(
+  input: string = readInputFromFile('04')
+): number {
+  // console.log(`The input is: ${input}`);
+  const records: string[] = formatInputStringComplete(input);
+  // console.log(`The inputs are: ${inputs}`);
+
+  let choosenId: number = 0;
+
+  const orderedRecords = orderRecords(records);
+  const recordChart = createRecordChart(orderedRecords);
+
+  type minutesMostSleptByGuardLogType = {
+    id: number;
+    minutesMostSleptByGuard: number[];
+  };
+
+  const minutesMostSleptByGuardLog = recordChart.reduce(
+    (acc: minutesMostSleptByGuardLogType[], chart: RecordChartElement) => {
+      let idIndex = acc.findIndex(x => x.id === chart.id);
+      const idAlreadyExist: boolean = idIndex !== -1;
+
+      if (!idAlreadyExist) {
+        acc.push({
+          id: chart.id,
+          minutesMostSleptByGuard: Object.seal(new Array<number>(60).fill(0))
+        });
+        idIndex = acc.findIndex(x => x.id === chart.id);
+      }
+
+      chart.minutes.forEach((minute, minuteIndex) => {
+        if (minute === '#') {
+          // console.log(
+          //   `--> ${chart.id} | ${minuteIndex}: ${chart.minutes[minuteIndex]}`
+          // );
+          acc[idIndex].minutesMostSleptByGuard[minuteIndex] += 1;
+        }
+      });
+
+      return acc;
+    },
+    []
+  );
+
+  choosenId = Array.from(minutesMostSleptByGuardLog).sort((a, b) => {
+    return (
+      Array.from(b.minutesMostSleptByGuard).sort((a, b) => b - a)[0] -
+      Array.from(a.minutesMostSleptByGuard).sort((a, b) => b - a)[0]
+    );
+  })[0].id;
+
+  const choosenIdIndex = minutesMostSleptByGuardLog.findIndex(
+    el => el.id === choosenId
+  );
+
+  const minuteAsleepTheMostByGuard = minutesMostSleptByGuardLog[
+    choosenIdIndex
+  ].minutesMostSleptByGuard.reduce(
+    (iMax, x, i, arr) => (x > arr[iMax] ? i : iMax),
+    0
+  ); //https://stackoverflow.com/a/30850912
+
+  // console.log(recordChart);
+  // console.log(minutesMostSleptByGuardLog);
+  // console.log(choosenId);
+  // console.log(minuteAsleepTheMostByGuard);
+
+  return choosenId * minuteAsleepTheMostByGuard;
+}
+
+export {
+  getGuardIDMultipliedByMinute,
+  getGuardIDMultipliedByMinuteAlternative
+};
