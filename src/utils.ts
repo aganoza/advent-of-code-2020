@@ -11,8 +11,12 @@ function readInputFromFile(path: string): string {
   return input;
 }
 
-function formatInputString(input: string, splitRegEx?: RegExp): string[] {
-  let regex: RegExp = splitRegEx === undefined ? /,|\n|\r\n/g : splitRegEx;
+function formatInputString(
+  input: string,
+  splitRegEx?: RegExp | string
+): string[] {
+  let regex: RegExp | string =
+    splitRegEx === undefined ? /,|\n|\r\n/g : splitRegEx;
 
   const formattedInput = input.replace(/ /g, '').split(regex);
   return formattedInput;
