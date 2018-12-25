@@ -105,4 +105,43 @@ function scanPolymer(input: string = readInputFromFile('05')): number {
   return unitsRemaining;
 }
 
-export { scanPolymer };
+//2nd Part
+
+// In this example, removing all C/c units was best, producing the answer 4.
+// What is the length of the shortest polymer you can produce by removing all units of exactly one type and fully reacting the result?
+
+type optimizedPolymer = {
+  letter: string;
+  polymer: string;
+  length: number;
+};
+
+function getShortestPolymer(input: string = readInputFromFile('05')): number {
+  // console.log(`The input is: ${input}`);
+  const polymer: string = input; // formatInputString(input, '');
+  // console.log(`The inputs are: ${inputs}`);
+  let shortestLength: number = 0;
+
+  let logger: optimizedPolymer[] = [];
+
+  // Recorremos el abcdario
+  for (let i = 'a'.charCodeAt(0); i < 'z'.charCodeAt(0) + 1; i++) {
+    const letter = String.fromCharCode(i);
+    const reducedPolymer = polymer.replace(new RegExp(letter, 'gi'), '');
+    const reactedPolymer: string = initReactionRec(reducedPolymer);
+
+    //console.log(`${letter}`); // | ${newPolymer}`);
+
+    logger.push({
+      letter,
+      polymer: reactedPolymer,
+      length: reactedPolymer.length
+    });
+  }
+
+  shortestLength = logger.sort((a, b) => a.length - b.length)[0].length;
+
+  return shortestLength;
+}
+
+export { scanPolymer, getShortestPolymer };

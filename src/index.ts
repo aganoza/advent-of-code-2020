@@ -1,7 +1,4 @@
 import * as main from './05';
 
-const result = main
-  .scanPolymer
-  // 'dabAcCaCBAcCcaDA'
-  ();
+const result = main.getShortestPolymer('dabAcCaCBAcCcaDA');
 console.log(`The result is ${result}`);
