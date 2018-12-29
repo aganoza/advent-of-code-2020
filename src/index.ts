@@ -1,4 +1,4 @@
-import * as main from './05';
+import * as main from './06';
 
-const result = main.getShortestPolymer('dabAcCaCBAcCcaDA');
+const result = main.wat();
 console.log(`The result is ${result}`);

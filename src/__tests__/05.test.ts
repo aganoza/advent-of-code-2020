@@ -6,14 +6,15 @@ const groupOfPolymers = [
   ['dabAcCaCBAcCcaDA', 10, 4]
 ];
 
+// Desactivados duran 166s aprox
 describe.each(groupOfPolymers)(
   'For the polymer %#',
   (polymer, expected, expectedShortest) => {
-    test(`the number of units remaining after fully reacting is ${expected}`, () => {
+    test.skip(`the number of units remaining after fully reacting is ${expected}`, () => {
       expect(scanPolymer(polymer)).toBe(expected);
     });
 
-    test(`the length of the shortest polymer you can produce by removing all units of exactly one type and fully reacting the result is ${expectedShortest}`, () => {
+    test.skip(`the length of the shortest polymer you can produce by removing all units of exactly one type and fully reacting the result is ${expectedShortest}`, () => {
       expect(getShortestPolymer(polymer)).toBe(expectedShortest);
     });
   }
