@@ -6,7 +6,7 @@ import {
   getIDNonOverlappingClaim
 } from '../03';
 
-const claimsForOverlappingInches = [
+const claimsForOverlappingInches: [number, number, number, string][] = [
   [4, 11, 9, '#1 @ 1,3: 4x4; #2 @ 3,1: 4x4; #3 @ 5,5: 2x2'],
   [
     124850,
@@ -25,7 +25,7 @@ test.each(claimsForOverlappingInches)(
   }
 );
 
-const claimsForDiagram = [
+const claimsForDiagram: [string, string[]][] = [
   [
     '#123 @ 3,2: 5x4',
     [
@@ -54,7 +54,7 @@ test.each(claimsForDiagram)(
   }
 );
 
-const claims = [
+const claims: [number,number,number,string][] = [
   [3, 11, 9, '#1 @ 1,3: 4x4; #2 @ 3,1: 4x4; #3 @ 5,5: 2x2'],
   [
     1097,

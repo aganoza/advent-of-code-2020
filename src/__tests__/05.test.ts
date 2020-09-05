@@ -1,7 +1,7 @@
 import { readInputFromFile } from '../utils';
 import { scanPolymer, getShortestPolymer } from '../05';
 
-const groupOfPolymers = [
+const groupOfPolymers: [string, number, number][] = [
   [readInputFromFile('05'), 9704, 6942],
   ['dabAcCaCBAcCcaDA', 10, 4]
 ];
