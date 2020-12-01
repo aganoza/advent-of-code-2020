@@ -1,4 +1,4 @@
-import * as main from './01';
+import * as main from './06';
 
 const result = main.wat();
 console.log(`The result is ${result}`);

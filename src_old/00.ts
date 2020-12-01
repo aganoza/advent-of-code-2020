@@ -1,6 +1,6 @@
 import { readInputFromFile, formatInputString } from './utils';
 
-function wat(input: string = readInputFromFile('01')): number {
+function wat(input: string = readInputFromFile('04')): number {
   // console.log(`The input is: ${input}`);
   const inputs: string[] = formatInputString(input);
   // console.log(`The inputs are: ${inputs}`);
