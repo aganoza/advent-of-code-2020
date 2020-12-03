@@ -5,6 +5,7 @@ function replace(cadena: string, nuevoChar: string, index: number) {
 }
 
 function expandirMapa(input: string): string {
+  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/length#Description
   if (input.length + input.length > 2 ** 30 - 2) {
     return input;
   }
@@ -15,12 +16,31 @@ function expandirMapa(input: string): string {
 function getNumberOfTrees(input: string = readInputFromFile("03")): number {
   // console.log(`The input is: ${input}`);
   const inputs: string[] = formatInputStringComplete(input);
+
+  // Slope right: 3 down: 1
+  const resultado = getNumberOfTreesParametrized(inputs, 3, 1);
+
+  // console.log({ resultado });
+  // console.log(resultado);
+
+  return resultado;
+}
+
+function getNumberOfTreesParametrized(
+  inputs: string[],
+  right: number,
+  down: number
+) {
   let mapa: string[] = inputs
     .map(expandirMapa)
     .map(expandirMapa)
     .map(expandirMapa)
     .map(expandirMapa)
+    .map(expandirMapa)
+    .map(expandirMapa)
     .map(expandirMapa);
+
+  // console.log({ mapa });
 
   // const map: string[][] = inputs.map((input) =>
   //   formatInputStringComplete(input, "")
@@ -32,16 +52,14 @@ function getNumberOfTrees(input: string = readInputFromFile("03")): number {
   // console.log(mapa[0].length);
   // console.log({ entries });
 
-  // Slope
-  const right = 3;
-  const down = 1;
-
-  let i = down;
-  for (; i < mapa.length; i += down) {
+  // i aumenta según el paso para abajo ingresado
+  // j itera el número de vueltas, se usa para obtener nuevo paso a la derecha
+  for (let i = down, j = 1; i < mapa.length; i += down, ++j) {
+    // for (let j = 0; i < 5; i += down, ++j) {
     // console.log(`i: ${i}`);
     // console.log(mapa[i]);
 
-    const indiceElegido = right * i;
+    const indiceElegido = right * j;
     const espacio = mapa[i].slice(indiceElegido, indiceElegido + 1);
     const esArbol = espacio === "#";
 
@@ -69,66 +87,38 @@ function getNumberOfTrees(input: string = readInputFromFile("03")): number {
   return resultado.length;
 }
 
-function getValidPasswordCountToboggan(
+function getNumberOfTreesMultipliedSlopes(
   input: string = readInputFromFile("03")
 ): number {
   // console.log(`The input is: ${input}`);
   const inputs: string[] = formatInputStringComplete(input);
-  const entries: string[][] = inputs.map((input) =>
-    formatInputStringComplete(input, " ")
-  );
 
-  // console.log(`The inputs are: ${entries}`);
-  // console.log({ inputs });
-  // console.log({ entries });
+  const slopeList = [
+    { right: 1, down: 1 },
+    { right: 3, down: 1 },
+    { right: 5, down: 1 },
+    { right: 7, down: 1 },
+    { right: 1, down: 2 },
+  ];
 
-  let contadorContraseñas: { [key: string]: boolean } = {};
-
-  for (let i = 0; i < entries.length; i++) {
-    // for (let i = 0; i < 1; i++) {
-    // console.log(`i: ${i}`);
-
-    const password = entries[i][2];
-    const letraControl = entries[i][1].slice(0, 1);
-    const pos1 = parseInt(entries[i][0].split("-")[0], 10) - 1;
-    const letra1 = password.slice(pos1, pos1 + 1);
-    const pos2 = parseInt(entries[i][0].split("-")[1], 10) - 1;
-    const letra2 = password.slice(pos2, pos2 + 1);
-
-    // console.log({ entry: entries[i] });
-    // console.log({ LetraControl: letraControl });
-    // console.log({ Pos1: pos1 });
-    // console.log({ Letra1: letra1 });
-    // console.log({ Pos2: pos2 });
-    // console.log({ Letra2: letra2 });
-    // console.log({ Password: password });
-
-    const cumpleRequisito1 = letra1 === letraControl;
-    const cumpleRequisito2 = letra2 === letraControl;
-
-    contadorContraseñas[i] = cumpleRequisito1 !== cumpleRequisito2; // No usamos contraseña como key sino su # orden
-    // console.log(contadorContraseñas[i]);
-
-    // console.log(
-    //   `letra: '${letraControl}' min:${minimo}-max:${maximo} ${contador[letraControl]} valido: ${cumpleRequisitos} ${password}`
-    // );
+  let i = 0;
+  let treesCounter: number[] = [];
+  for (const slopePair of slopeList) {
+    treesCounter[i] = getNumberOfTreesParametrized(
+      inputs,
+      slopePair.right,
+      slopePair.down
+    );
+    // console.log(`i:${i} - Arboles: ${treesCounter[i]}`);
+    ++i;
   }
-  // console.log(contadorContraseñas);
 
-  // Verificar que de 1000
-  // console.log(
-  //   Object.keys(contadorContraseñas).map(
-  //     (indexOriginal, i) => contadorContraseñas[indexOriginal]
-  //   ).length
-  // );
+  // console.log(treesCounter);
 
-  const resultado = Object.keys(contadorContraseñas).filter(
-    (indexOriginal, i) => contadorContraseñas[indexOriginal]
-  ).length;
-
-  // console.log(resultado);
-
-  return resultado;
+  return treesCounter.reduce((a, b) => {
+    // console.log(`a:${a} b:${b} a * b:${a * b}`);
+    return a * b;
+  }, 1);
 }
 
-export { getNumberOfTrees, getValidPasswordCountToboggan };
+export { getNumberOfTrees, getNumberOfTreesMultipliedSlopes };
