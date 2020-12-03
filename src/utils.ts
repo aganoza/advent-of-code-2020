@@ -25,9 +25,10 @@ function formatInputString(
 
 function formatInputStringComplete(
   input: string,
-  splitRegEx?: RegExp
+  splitRegEx?: RegExp | string
 ): string[] {
-  let regex: RegExp = splitRegEx === undefined ? /,|\n|\r\n/g : splitRegEx;
+  let regex: RegExp | string =
+    splitRegEx === undefined ? /,|\n|\r\n/g : splitRegEx;
 
   const formattedInput = input.split(regex);
   return formattedInput;
