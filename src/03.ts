@@ -4,15 +4,6 @@ function replace(cadena: string, nuevoChar: string, index: number) {
   return cadena.slice(0, index) + nuevoChar + cadena.slice(index);
 }
 
-function expandirMapa(input: string): string {
-  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/length#Description
-  if (input.length + input.length > 2 ** 30 - 2) {
-    return input;
-  }
-  // console.log(input.concat(input));
-  return input.concat(input);
-}
-
 function getNumberOfTrees(input: string = readInputFromFile("03")): number {
   // console.log(`The input is: ${input}`);
   const inputs: string[] = formatInputStringComplete(input);
@@ -31,48 +22,29 @@ function getNumberOfTreesParametrized(
   right: number,
   down: number
 ) {
-  let mapa: string[] = inputs
-    .map(expandirMapa)
-    .map(expandirMapa)
-    .map(expandirMapa)
-    .map(expandirMapa)
-    .map(expandirMapa)
-    .map(expandirMapa)
-    .map(expandirMapa);
+  let mapa: string[] = [...inputs];
 
   // console.log({ mapa });
 
-  // const map: string[][] = inputs.map((input) =>
-  //   formatInputStringComplete(input, "")
-  // );
+  // fila aumenta según el paso para abajo ingresado
+  // nroVuelta itera el número de vueltas, se usa para obtener nuevo paso a la derecha
+  for (
+    let fila = down, nroVuelta = 1;
+    fila < mapa.length;
+    fila += down, ++nroVuelta
+  ) {
+    // console.log(`fila: ${fila}`);
+    // console.log(mapa[fila]);
 
-  // console.log(`The inputs are: ${entries}`);
-  // console.log({ inputs });
-  // console.log({ mapa });
-  // console.log(mapa[0].length);
-  // console.log({ entries });
-
-  // i aumenta según el paso para abajo ingresado
-  // j itera el número de vueltas, se usa para obtener nuevo paso a la derecha
-  for (let i = down, j = 1; i < mapa.length; i += down, ++j) {
-    // for (let j = 0; i < 5; i += down, ++j) {
-    // console.log(`i: ${i}`);
-    // console.log(mapa[i]);
-
-    const indiceElegido = right * j;
-    const espacio = mapa[i].slice(indiceElegido, indiceElegido + 1);
+    const indiceElegido = (right * nroVuelta) % mapa[fila].length; // Si no hay espacio a la derecha regresa al inicio con MOD
+    const espacio = mapa[fila].slice(indiceElegido, indiceElegido + 1);
     const esArbol = espacio === "#";
 
     // console.log({ indiceElegido });
     // console.log({ espacio });
     // console.log({ esArbol });
 
-    if (indiceElegido > mapa[i].length) {
-      console.error("Se llegó a límite derecho de Mapa");
-      return -1;
-    }
-
-    mapa[i] = replace(mapa[i], esArbol ? "X" : "O", indiceElegido);
+    mapa[fila] = replace(mapa[fila], esArbol ? "X" : "O", indiceElegido);
   }
 
   // console.log({ mapa });
