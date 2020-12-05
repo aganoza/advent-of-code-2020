@@ -4,6 +4,6 @@ import * as main from "./05";
 // BFFFBBFRRR
 // FFFBBBFRRR
 // BBFFBBFRLL`);
-const result = main.getHighestSeatID();
+const result = main.getRealSeatID();
 
 console.log(`El resultado es ${result}`);
