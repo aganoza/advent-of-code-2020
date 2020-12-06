@@ -1,6 +1,6 @@
 import * as main from "./06";
 
-// const result = main.getSumOfGroupYesAnswers(
+// const result = main.getSumOfGroupEveryoneYesAnswers(
 //   `abc
 
 // a
@@ -17,6 +17,6 @@ import * as main from "./06";
 
 // b`
 // );
-const result = main.getSumOfGroupYesAnswers();
+const result = main.getSumOfGroupEveryoneYesAnswers();
 
 console.log(`El resultado es ${result}`);
