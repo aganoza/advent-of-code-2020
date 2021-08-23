@@ -17,7 +17,7 @@ function getSumOfGroupYesAnswers(
   // console.log({ votosXGrupos });
 
   let suma = 0;
-  votosXGrupos.forEach((votosGrupo, i) => {
+  votosXGrupos.forEach((votosGrupo /*, i*/) => {
     const votosUnicos = new Set<string>(votosGrupo.join(""));
     // console.log(`i: ${i}`);
     // console.log(votosGrupo);
@@ -49,7 +49,7 @@ function getSumOfGroupEveryoneYesAnswers(
   // console.log({ votosXGrupos });
 
   let suma = 0;
-  votosXGrupos.forEach((votosGrupo, i) => {
+  votosXGrupos.forEach((votosGrupo /*, i*/) => {
     const nroPersonas = votosGrupo.length;
 
     let votosASumar = 0;

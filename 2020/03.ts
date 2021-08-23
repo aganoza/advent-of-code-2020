@@ -49,7 +49,7 @@ function getNumberOfTreesParametrized(
 
   // console.log({ mapa });
 
-  const resultado = mapa.filter((filaMapa, i) =>
+  const resultado = mapa.filter((filaMapa /*, i */) =>
     filaMapa.indexOf("X") >= 0 ? true : false
   );
 

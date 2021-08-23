@@ -188,25 +188,19 @@ function getNumberOfValidaPassportsStrict(
       } else if (nombre === "hcl") {
         const colorPelo = valor;
         // hcl (Hair Color) - a # followed by exactly six characters 0-9 or a-f.
-        const esValido = /^\#([a-f]|[0-9]){6}/.test(colorPelo);
+        const esValido = /^#([a-f]|[0-9]){6}/.test(colorPelo);
         // console.log(`${colorPelo} es ${esValido}`);
         return esValido;
       } else if (nombre === "ecl") {
         const colorOjo = valor;
         // ecl (Eye Color) - exactly one of: amb blu brn gry grn hzl oth.
-        const esValido = [
-          "amb",
-          "blu",
-          "brn",
-          "gry",
-          "grn",
-          "hzl",
-          "oth",
-        ].some((colorPermitido) => colorPermitido.includes(colorOjo));
+        const esValido = ["amb", "blu", "brn", "gry", "grn", "hzl", "oth"].some(
+          (colorPermitido) => colorPermitido.includes(colorOjo)
+        );
         // console.log(`${colorOjo} es ${esValido}`);
         return esValido;
       } else if (nombre === "pid") {
-        const passportId = valor;
+        // const passportId = valor;
         // pid (Passport ID) - a nine-digit number, including leading zeroes.
         const esValido = /^[0-9]{9}$/.test(valor);
         // console.log(`${passportId} es ${esValido}`);

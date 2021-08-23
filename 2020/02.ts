@@ -57,7 +57,7 @@ function getValidPasswordCount(
   // );
 
   const resultado = Object.keys(contadorContraseñas).filter(
-    (indexOriginal, i) => contadorContraseñas[indexOriginal]
+    (indexOriginal /*, i*/) => contadorContraseñas[indexOriginal]
   ).length;
 
   // console.log(resultado);
@@ -119,7 +119,7 @@ function getValidPasswordCountToboggan(
   // );
 
   const resultado = Object.keys(contadorContraseñas).filter(
-    (indexOriginal, i) => contadorContraseñas[indexOriginal]
+    (indexOriginal /*, i*/) => contadorContraseñas[indexOriginal]
   ).length;
 
   // console.log(resultado);

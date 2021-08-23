@@ -4,7 +4,6 @@ import {
 } from "../06";
 import { readInputFromFile } from "../utils";
 
-/*
 const listOfEntries: [string, number][] = [
   [
     `abc
@@ -30,7 +29,6 @@ b`,
 test.each(listOfEntries)("%s results in %i", (entries, expected) => {
   expect(getSumOfGroupYesAnswers(entries)).toBe(expected);
 });
-*/
 
 const listOfEntries2: [string, number][] = [
   [
