@@ -1,13 +1,10 @@
 // https://stackoverflow.com/a/50661511
 // import fs from 'fs';
-import * as fs from 'fs';
+import * as fs from "fs";
 
 function readInputFromFile(path: string): string {
-  const fullpath = `./src/${path}.input.txt`;
-  const input = fs
-    .readFileSync(fullpath)
-    .toString()
-    .trim();
+  const fullpath = `./2018/${path}.input.txt`;
+  const input = fs.readFileSync(fullpath).toString().trim();
   return input;
 }
 
@@ -18,7 +15,7 @@ function formatInputString(
   let regex: RegExp | string =
     splitRegEx === undefined ? /,|\n|\r\n/g : splitRegEx;
 
-  const formattedInput = input.replace(/ /g, '').split(regex);
+  const formattedInput = input.replace(/ /g, "").split(regex);
   return formattedInput;
 }
 

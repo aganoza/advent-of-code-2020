@@ -3,7 +3,7 @@
 import * as fs from "fs";
 
 function readInputFromFile(path: string): string {
-  const fullpath = `./src/${path}.input.txt`;
+  const fullpath = `./2020/${path}.input.txt`;
   const input = fs.readFileSync(fullpath).toString().trim();
   return input;
 }

@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`aabcdd to Match Snapshot 1`] = `
+Object {
+  "a": 2,
+  "b": 1,
+  "c": 1,
+  "d": 2,
+}
+`;
+
+exports[`ababab to Match Snapshot 1`] = `
+Object {
+  "a": 3,
+  "b": 3,
+}
+`;
+
+exports[`abbcde to Match Snapshot 1`] = `
+Object {
+  "a": 1,
+  "b": 2,
+  "c": 1,
+  "d": 1,
+  "e": 1,
+}
+`;
+
+exports[`abcccd to Match Snapshot 1`] = `
+Object {
+  "a": 1,
+  "b": 1,
+  "c": 3,
+  "d": 1,
+}
+`;
+
+exports[`abcdee to Match Snapshot 1`] = `
+Object {
+  "a": 1,
+  "b": 1,
+  "c": 1,
+  "d": 1,
+  "e": 2,
+}
+`;
+
+exports[`abcdef to Match Snapshot 1`] = `
+Object {
+  "a": 1,
+  "b": 1,
+  "c": 1,
+  "d": 1,
+  "e": 1,
+  "f": 1,
+}
+`;
+
+exports[`bababc to Match Snapshot 1`] = `
+Object {
+  "a": 2,
+  "b": 3,
+  "c": 1,
+}
+`;
