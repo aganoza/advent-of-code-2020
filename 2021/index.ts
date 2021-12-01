@@ -1,5 +1,5 @@
-import * as main from "./00";
+import * as main from "./01";
 
-const result = main.wat();
+const result = main.numberOfTimesDepthMeasurementIncreases();
 
 console.log(`El resultado es ${result}`);

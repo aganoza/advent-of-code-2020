@@ -24,7 +24,8 @@
     "start": "npm run build:live",
     "build": "tsc -p .",
     "build:live": "nodemon --watch 2021/**/*.ts --exec ts-node 2021/index.ts",
-    "test": "jest \"\\.ts\""
+    "test": "jest \"\\.ts\"",
+    "test:watch": "npm test -- --watch"
   },
   "keywords": [],
   "author": "",
