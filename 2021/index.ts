@@ -1,5 +1,5 @@
-import * as main from "./01";
+import * as main from "./02";
 
-const result = main.numberOfTimesDepthMeasurementIncreasesInSlidingWindow();
+const result = main.multiplyHorizontalPositionByDepth();
 
 console.log(`El resultado es ${result}`);
