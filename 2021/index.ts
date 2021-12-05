@@ -1,5 +1,5 @@
-import * as main from "./04";
+import * as main from "./05";
 
-const result = main.getFinalScoreLastToWin();
+const result = main.getHowManyPointsTwoLinesOrMoreOverlap();
 
 console.log(`El resultado es ${result}`);
