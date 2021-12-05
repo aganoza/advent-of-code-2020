@@ -1,5 +1,5 @@
-import * as main from "./03";
+import * as main from "./04";
 
-const result = main.getLifeSupportRating();
+const result = main.getFinalScore();
 
 console.log(`El resultado es ${result}`);
