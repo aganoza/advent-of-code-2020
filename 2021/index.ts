@@ -1,5 +1,5 @@
-import * as main from "./06";
+import * as main from "./07";
 
-const result = main.howManyLanternfishAfterXdaysEfficient();
+const result = main.howMuchFuelToAlignToCheapestPosition();
 
 console.log(`El resultado es ${result}`);
