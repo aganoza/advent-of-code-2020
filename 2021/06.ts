@@ -65,4 +65,34 @@ function howManyLanternfishAfterXdays(
   return result;
 }
 
-export { howManyLanternfishAfterXdays };
+// TODO: Revisar lógica
+function howManyLanternfishAfterXdaysEfficient(
+  input: string = readInputFromFile("06"),
+  days: number = 256
+): number {
+  // console.log(`The input is: ${input}`);
+  const initial: number[] = formatInputStringComplete(input).map((s) =>
+    parseInt(s)
+  );
+
+  const cycle = 6;
+  const fishes: number[] | undefined = Array(cycle + 3).fill(0);
+
+  initial.forEach((_) => fishes[_]++);
+
+  for (let i = 0; i < days; i++) {
+    const newFish = fishes[0];
+
+    let x = fishes.shift();
+    if (typeof x === "undefined") throw new Error("array has no fish");
+
+    fishes.push(x); // Cycles array elements
+    fishes[cycle] += newFish;
+  }
+
+  const sum = fishes.reduce((acc, cur) => (acc += cur));
+
+  return sum;
+}
+
+export { howManyLanternfishAfterXdays, howManyLanternfishAfterXdaysEfficient };
