@@ -66,6 +66,7 @@ function howManyLanternfishAfterXdays(
 }
 
 // TODO: Revisar lógica
+// https://www.reddit.com/r/adventofcode/comments/r9z49j/comment/hnfhi24/?utm_source=share&utm_medium=web2x&context=3
 function howManyLanternfishAfterXdaysEfficient(
   input: string = readInputFromFile("06"),
   days: number = 256
