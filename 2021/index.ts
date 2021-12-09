@@ -1,5 +1,5 @@
 import * as main from "./08";
 
-const result = main.howManyTimesDoDigits147or8appear();
+const result = main.addUpAllOutputValues();
 
 console.log(`El resultado es ${result}`);
