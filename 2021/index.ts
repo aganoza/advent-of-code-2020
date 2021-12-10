@@ -1,5 +1,5 @@
-import * as main from "./09";
+import * as main from "./10";
 
-const result = main.getLargestThreeBasinsSizesMultipliedTogether();
+const result = main.getTotalSyntaxErrorScoreForErrors();
 
 console.log(`El resultado es ${result}`);
