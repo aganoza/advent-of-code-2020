@@ -1,4 +1,4 @@
-import { getTotalSyntaxErrorScoreForErrors } from "../10";
+import { getTotalSyntaxErrorScoreForErrors, getMiddleScore } from "../10";
 import { readInputFromFile } from "../utils";
 
 const listOfEntries: [number, string][] = [
@@ -22,4 +22,25 @@ const listOfEntries: [number, string][] = [
 
 test.each(listOfEntries)("results in %i", (expected, entries) => {
   expect(getTotalSyntaxErrorScoreForErrors(entries)).toBe(expected);
+});
+
+const listOfEntries2: [number, string][] = [
+  [
+    288957,
+    `[({(<(())[]>[[{[]{<()<>>
+[(()[<>])]({[<{<<[]>>(
+{([(<{}[<>[]}>{[]{[(<()>
+(((({<>}<{<{<>}{[]{[]{}
+[[<[([]))<([[{}[[()]]]
+[{[{({}]{}}([{[{{{}}([]
+{<[[]]>}<{[{[{[]{()[[[]
+[<(<(<(<{}))><([]([]()
+<{([([[(<>()){}]>(<<{{
+<{([{{}}[<[[[<>{}]]]>[]]`,
+  ],
+  [3249889609, readInputFromFile("10")],
+];
+
+test.each(listOfEntries2)("results in %i", (expected, entries) => {
+  expect(getMiddleScore(entries)).toBe(expected);
 });
