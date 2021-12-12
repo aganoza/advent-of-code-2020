@@ -34,6 +34,20 @@ function formatInputStringComplete(
   return formattedInput;
 }
 
+/**
+ * Función generadora de secuencia (Python)
+ * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from#sequence_generator_range
+ * @param start
+ * @param stop
+ * @param step
+ * @returns Array con ese numero de elementos
+ */
+const range = (stop: number = 0, start: number = 0, step: number = 1) =>
+  Array.from(
+    { length: (stop - start - 1) / step + 1 },
+    (_, i) => start + i * step
+  );
+
 // function _getCallerFile2() {
 //   try {
 //     let err = new Error();
@@ -82,4 +96,9 @@ function formatInputStringComplete(
 //   return callerfile;
 // }
 
-export { readInputFromFile, formatInputString, formatInputStringComplete };
+export {
+  readInputFromFile,
+  formatInputString,
+  formatInputStringComplete,
+  range,
+};
