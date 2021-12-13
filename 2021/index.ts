@@ -1,5 +1,5 @@
-import * as main from "./11";
+import * as main from "./12";
 
-const result = main.getFirstStepAllOctopusesFlash();
+const result = main.getNumberOfPathsVisitSmallCavesAtMostOnce();
 
 console.log(`El resultado es ${result}`);
