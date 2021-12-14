@@ -1,5 +1,5 @@
-import * as main from "./12";
+import * as main from "./13";
 
-const result = main.getHowManyPathsThroughThisCaveSystem();
+const result = main.getNumberOfDotsVisible();
 
 console.log(`El resultado es ${result}`);

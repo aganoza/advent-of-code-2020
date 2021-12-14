@@ -1,10 +1,10 @@
-import { readInputFromFile, formatInputString } from "./utils";
+import { readInputFromFile, formatInputStringComplete } from "./utils";
 
 function wat(input: string = readInputFromFile("00")): number {
   // console.log(`The input is: ${input}`);
-  const inputs: string[] = formatInputString(input);
+  const inputs: string[] = formatInputStringComplete(input);
   // console.log(`The inputs are: ${inputs}`);
-  let frequency: number = 0;
+  let result: number = 0;
 
   // let i = 0;
   for (const input of inputs) {
@@ -13,7 +13,7 @@ function wat(input: string = readInputFromFile("00")): number {
     // console.log(`-> Current frecuency is ${frequency}`);
   }
 
-  return frequency;
+  return result;
 }
 
 export { wat };
