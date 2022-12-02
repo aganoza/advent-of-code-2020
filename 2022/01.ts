@@ -1,22 +1,53 @@
 import { readInputFromFile, formatInputString } from "./utils";
 
-function getWip(input: string = readInputFromFile("01")): number {
-  // console.log(`The input is: ${input}`);
-  const inputs: number[] = formatInputString(input).map((n) => parseInt(n));
-  // console.log(`The inputs are: ${inputs}`);
-  let result: number = 0;
+function getMostCalories(input: string = readInputFromFile("01")): number {
+  const inputs: number[] = formatInputString(input, /\n\n|\r\n\r\n/).map(
+    (line: string) => {
+      // console.log({ line });
+      const group = formatInputString(line, /\n|\r\n/).map((n) => parseInt(n));
 
-  // Obviamos la primera medición
-  for (let i = 1; i < inputs.length; i++) {
-    // console.log(`Round #${i}`);
-    // console.log(`${inputs[i]} > ${inputs[i - 1]}`);
-    if (inputs[i] > inputs[i - 1]) {
-      ++result;
+      // console.log({ group });
+      const sum = group.reduce((acc, current) => {
+        return acc + current;
+      }, 0);
+      // console.log({ sum });
+      // console.log("\n");
+      return sum;
     }
-    // console.log(`-> Current result is ${result}`);
-  }
+  );
+  // console.log(`The input are: \n${inputs}`);
+  let result: number = inputs.reduce((a, b) => Math.max(a, b), -Infinity);
+
+  // console.log(`-> Current result is ${result}`);
 
   return result;
 }
 
-export { getWip };
+function getTopThreeMostCalories(
+  input: string = readInputFromFile("01")
+): number {
+  const inputs: number[] = formatInputString(input, /\n\n|\r\n\r\n/).map(
+    (line: string) => {
+      // console.log({ line });
+      const group = formatInputString(line, /\n|\r\n/).map((n) => parseInt(n));
+
+      // console.log({ group });
+      const sum = group.reduce((acc, current) => {
+        return acc + current;
+      }, 0);
+      // console.log({ sum });
+      // console.log("\n");
+      return sum;
+    }
+  );
+  // console.log(`The input are: \n${inputs}`);
+  // let result: number = inputs.reduce((a, b) => Math.max(a, b), -Infinity);
+  let sorted: number[] = inputs.sort((a, b) => b - a);
+  // console.log({ sorted });
+
+  let result = sorted[0] + sorted[1] + sorted[2];
+  // console.log(`-> Current result is ${result}`);
+  return result;
+}
+
+export { getMostCalories, getTopThreeMostCalories };
