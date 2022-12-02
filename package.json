@@ -2,11 +2,7 @@
   "name": "advent-of-code-ts",
   "version": "1.0.0",
   "description": "",
-  "main": "01.js",
   "private": true,
-  "dependencies": {
-    "nodemon": "^2.0.15"
-  },
   "devDependencies": {
     "@types/jest": "^27.0.3",
     "@types/node": "^16.11.10",
@@ -16,14 +12,15 @@
     "eslint-plugin-jest": "^25.3.0",
     "jest": "^27.3.1",
     "ts-jest": "^27.0.7",
-    "ts-node": "^10.4.0",
+    "tsx": "^3.12.1",
     "typescript": "^4.5.2"
   },
   "scripts": {
     "lint": "eslint 2021",
-    "start": "npm run build:live",
+    "start": "npm run dev:watch",
     "build": "tsc -p .",
-    "build:live": "nodemon --watch 2021/**/*.ts --exec ts-node 2021/index.ts",
+    "dev": "tsx 2021/index.ts",
+    "dev:watch": "tsx watch 2021/index.ts",
     "test": "jest \"\\.ts\"",
     "test:watch": "npm test -- --watch"
   },
