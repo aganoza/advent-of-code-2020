@@ -1,4 +1,8 @@
-import { readInputFromFile, formatInputString } from "./utils";
+import {
+  readInputFromFile,
+  formatInputString,
+  formatInputStringComplete,
+} from "./utils";
 
 const objectKeys = <T extends object>(obj: T) => {
   return Object.keys(obj) as Array<keyof T>;
@@ -8,16 +12,10 @@ function isKey<T extends object>(x: T, k: PropertyKey): k is keyof T {
   return k in x;
 }
 
-const MAX_NUMBER_CUBES = {
-  red: 12,
-  green: 13,
-  blue: 14,
-};
-
 function getPossibleIdGamesSum(
   input: string = readInputFromFile("02")
 ): number {
-  const inputs: string[] = formatInputString(input, /\n|\r\n/g);
+  const inputs: string[] = formatInputStringComplete(input, /\n|\r\n/g);
   // console.log(inputs);
 
   let result: number = 0;
@@ -28,32 +26,16 @@ function getPossibleIdGamesSum(
     const sets = rest.split(/;/g);
     // console.log({ line, id, sets });
 
-    let isValid = false;
+    let isValid = true;
 
     for (const set of sets) {
-      const totalLinesCubes = { red: 0, green: 0, blue: 0 };
       const cubesCount = set.split(/,/g);
-      // console.log({ cubesCount });
       for (const cube of cubesCount) {
-        Object.keys(totalLinesCubes).forEach((COLOR) => {
-          if (isKey(totalLinesCubes, COLOR)) {
-            if (cube.includes(COLOR)) {
-              const number = Number(cube.replace(COLOR, ""));
-              // console.log({ cube, number });
-              totalLinesCubes[COLOR] += number;
-            }
-          } else {
-            throw new Error(`Invalid color ${COLOR}`);
-          }
-        });
-      }
-
-      isValid = objectKeys(MAX_NUMBER_CUBES).every((COLOR) => {
-        return totalLinesCubes[COLOR] <= MAX_NUMBER_CUBES[COLOR];
-      });
-
-      if (!isValid) {
-        break;
+        const [, n, color] = cube.split(/(\d+)/).map((x) => x.trim());
+        if (Number(n) > ({ red: 12, green: 13, blue: 14 }[color] ?? 0)) {
+          isValid = false;
+        }
+        // console.log({ isValid, n, color, cubesCount });
       }
     }
     // console.log({ sets, isValid, id, result });
@@ -91,17 +73,13 @@ function getMinimumSetPower(input: string = readInputFromFile("02")): number {
       // console.log({ cubesCount });
 
       for (const cube of cubesCount) {
-        Object.keys(maxCubes).forEach((COLOR) => {
-          if (isKey(maxCubes, COLOR)) {
-            if (cube.includes(COLOR)) {
-              const number = Number(cube.replace(COLOR, ""));
-              // console.log({ cube, number });
-              if (maxCubes[COLOR] < number) {
-                maxCubes[COLOR] = number;
-              }
+        objectKeys(maxCubes).forEach((COLOR) => {
+          if (cube.includes(COLOR)) {
+            const number = Number(cube.replace(COLOR, ""));
+            // console.log({ cube, number });
+            if (maxCubes[COLOR] < number) {
+              maxCubes[COLOR] = number;
             }
-          } else {
-            throw new Error(`Invalid color ${COLOR}`);
           }
         });
       }
