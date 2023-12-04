@@ -1,5 +1,5 @@
 import * as main from "./03";
 
-const result = main.getSchematicValidNumbersSum();
+const result = main.getGearRatiosSum();
 
 console.log(`El resultado es ${result}`);
