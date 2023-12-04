@@ -1,5 +1,5 @@
-import * as main from "./02";
+import * as main from "./03";
 
-const result = main.getMinimumSetPower();
+const result = main.getSchematicValidNumbersSum();
 
 console.log(`El resultado es ${result}`);
