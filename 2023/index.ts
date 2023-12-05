@@ -1,5 +1,5 @@
-import * as main from "./04";
+import * as main from "./05";
 
-const result = main.getTotalScratchcards();
+const result = main.getLowestLocationOfSeedNumbers();
 
 console.log(`El resultado es ${result}`);
