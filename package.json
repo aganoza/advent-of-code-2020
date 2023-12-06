@@ -18,7 +18,7 @@
   "scripts": {
     "lint": "eslint 2023",
     "start": "npm run dev:watch",
-    "build": "tsc -p .",
+    "typecheck": "tsc --noEmit",
     "dev": "tsx 2023/index.ts",
     "dev:watch": "tsx watch 2023/index.ts",
     "test": "jest \"\\.ts\"",
