@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`aabcdd to Match Snapshot 1`] = `
-Object {
+{
   "a": 2,
   "b": 1,
   "c": 1,
@@ -10,14 +10,14 @@ Object {
 `;
 
 exports[`ababab to Match Snapshot 1`] = `
-Object {
+{
   "a": 3,
   "b": 3,
 }
 `;
 
 exports[`abbcde to Match Snapshot 1`] = `
-Object {
+{
   "a": 1,
   "b": 2,
   "c": 1,
@@ -27,7 +27,7 @@ Object {
 `;
 
 exports[`abcccd to Match Snapshot 1`] = `
-Object {
+{
   "a": 1,
   "b": 1,
   "c": 3,
@@ -36,7 +36,7 @@ Object {
 `;
 
 exports[`abcdee to Match Snapshot 1`] = `
-Object {
+{
   "a": 1,
   "b": 1,
   "c": 1,
@@ -46,7 +46,7 @@ Object {
 `;
 
 exports[`abcdef to Match Snapshot 1`] = `
-Object {
+{
   "a": 1,
   "b": 1,
   "c": 1,
@@ -57,7 +57,7 @@ Object {
 `;
 
 exports[`bababc to Match Snapshot 1`] = `
-Object {
+{
   "a": 2,
   "b": 3,
   "c": 1,

@@ -130,7 +130,7 @@ const unicodeValidChars: UnicodeValidChar[] = getUnicodeValidChars();
 // 1-based index
 function getUnicodeValidChars(): UnicodeValidChar[] {
   const unicodeChars = fs
-    .readFileSync(`./src/UnicodeData.txt`) // http://www.unicode.org/Public/8.0.0/ucd/UnicodeData.txt
+    .readFileSync(`./2018/UnicodeData.txt`) // http://www.unicode.org/Public/8.0.0/ucd/UnicodeData.txt
     .toString()
     .trim()
     .split(/\n|\r\n/g);
