@@ -1,5 +1,5 @@
-import * as main from "./05";
+import * as main from "./06";
 
-const result = main.getLowestLocationOfSeedNumbersWithRange();
+const result = main.getNumberOfWaysBeatRecord();
 
 console.log(`El resultado es ${result}`);
