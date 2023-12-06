@@ -1,4 +1,4 @@
-import { readInputFromFile, formatInputStringComplete, range } from "./utils";
+import { readInputFromFile, formatInputStringComplete } from "./utils";
 
 function getTotalPoints(input: string = readInputFromFile("04")): number {
   const inputs: string[] = formatInputStringComplete(input, /\n|\r\n/g);
