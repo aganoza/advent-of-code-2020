@@ -1,5 +1,5 @@
-import * as main from "./06";
+import * as main from "./07";
 
-const result = main.getNumberOfWaysBeatRecordSingle();
+const result = main.getTotalWinnnigs();
 
 console.log(`El resultado es ${result}`);
