@@ -1,5 +1,5 @@
-import * as main from "./08";
+import * as main from "./09";
 
-const result = main.getNumberStepsReachMultipleZZZ();
+const result = main.getExtrapolatedValuesSum();
 
 console.log(`El resultado es ${result}`);
