@@ -1,5 +1,5 @@
 import * as main from "./08";
 
-const result = main.getNumberStepsReachZZZ();
+const result = main.getNumberStepsReachMultipleZZZ();
 
 console.log(`El resultado es ${result}`);

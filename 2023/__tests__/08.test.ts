@@ -1,4 +1,4 @@
-import { getNumberStepsReachZZZ } from "../08";
+import { getNumberStepsReachZZZ, getNumberStepsReachMultipleZZZ } from "../08";
 import { readInputFromFile } from "../utils";
 
 const listOfEntries: [number, string][] = [
@@ -19,4 +19,25 @@ ZZZ = (ZZZ, ZZZ)`,
 
 test.each(listOfEntries)("results in %i", (expected, entries) => {
   expect(getNumberStepsReachZZZ(entries)).toBe(expected);
+});
+
+const listOfEntries2: [number, string][] = [
+  [
+    6,
+    `LR
+
+11A = (11B, XXX)
+11B = (XXX, 11Z)
+11Z = (11B, XXX)
+22A = (22B, XXX)
+22B = (22C, 22C)
+22C = (22Z, 22Z)
+22Z = (22B, 22B)
+XXX = (XXX, XXX)`,
+  ],
+  // [21165830176709, readInputFromFile("08")], // TODO: Make it work for larger values, Lookup Chinese Remainder Theorem
+];
+
+test.each(listOfEntries2)("results in %i", (expected, entries) => {
+  expect(getNumberStepsReachMultipleZZZ(entries)).toBe(expected);
 });
