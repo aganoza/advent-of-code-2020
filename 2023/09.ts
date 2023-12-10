@@ -95,4 +95,43 @@ function getExtrapolatedValuesSum(
   return result;
 }
 
-export { getExtrapolatedValuesSum };
+function recursivePreviuosSumDirections(directions: number[]): number {
+  const allZeroes: boolean = directions.every((x) => x === 0);
+  if (allZeroes) {
+    return 0;
+  }
+
+  const differences = [];
+  for (let i = 0; i < directions.length - 1; i++) {
+    const value = directions[i];
+    const nextValue = directions[i + 1];
+    // console.log({ value, nextValue });
+    differences.push(nextValue - value);
+  }
+
+  const initialValue = directions.at(0) ?? 0;
+  // console.log({ directions, initialValue });
+
+  return initialValue - recursivePreviuosSumDirections(differences);
+}
+
+function getExtrapolatedPreviousValuesSum(
+  input: string = readInputFromFile("09")
+): number {
+  const inputs = formatInputStringComplete(input)
+    .map((line) => line.split(" "))
+    .map((line) => line.map((value) => parseInt(value)));
+  // console.log({ inputs });
+
+  let result: number = 0;
+
+  for (const directions of inputs) {
+    const sum = recursivePreviuosSumDirections(directions);
+    // console.log({ sum });
+    result += sum;
+  }
+
+  return result;
+}
+
+export { getExtrapolatedValuesSum, getExtrapolatedPreviousValuesSum };
