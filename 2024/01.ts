@@ -37,28 +37,27 @@ function getSimilarityScore(input: string = readInputFromFile("01")): number {
 
   let A: Array<number> = [];
   let B: Array<number> = [];
+  let COUNTER: Map<number, number> = new Map();
+
   inputs.forEach((line) => {
-    const [a, b] = line.split(/   /);
-    A.push(parseInt(a, 10));
-    B.push(parseInt(b, 10));
+    let [aS, bS] = line.split(/   /);
+    let [a, b] = [parseInt(aS, 10), parseInt(bS, 10)];
+    A.push(a);
+    B.push(b);
+    COUNTER.set(b, (COUNTER.get(b) ?? 0) + 1);
   });
+
   A.sort((a, b) => a - b);
   B.sort((a, b) => a - b);
 
   let SCORES: Array<number> = [];
 
-  for (let i = 0; i < A.length; i++) {
-    const a = A[i];
-    let entry = 0;
-    for (let j = 0; j < B.length; j++) {
-      const b = B[j];
-      if (a === b) {
-        entry += 1;
-      }
-    }
-    SCORES.push(entry * a);
+  for (const a of A) {
+    let c = COUNTER.get(a) ?? 0;
+    SCORES.push(c * a);
   }
-  //   console.log({ A, B, SCORES });
+
+  //   console.log({ A, B, COUNTER, SCORES });
 
   let result = SCORES.reduce((prev, curr) => prev + curr, 0);
 
