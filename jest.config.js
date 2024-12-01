@@ -2,5 +2,5 @@
 module.exports = {
   preset: "ts-jest",
   testEnvironment: "node",
-  testPathIgnorePatterns: ["/2018/", "/2020/", "/2021/", "/2022/"],
+  testPathIgnorePatterns: ["/2018/", "/2020/", "/2021/", "/2022/", "2023"],
 };
