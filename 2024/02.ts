@@ -39,4 +39,50 @@ function getHowManyReportsAreSafe(
   return result;
 }
 
-export { getHowManyReportsAreSafe };
+function isGood(xs: number[]): boolean {
+  const isSortedAscending = xs.every(
+    (val, i, arr) => i === 0 || arr[i - 1] <= val
+  );
+  const isSortedDescending = xs.every(
+    (val, i, arr) => i === 0 || arr[i - 1] >= val
+  );
+  const incOrDec = isSortedAscending || isSortedDescending;
+
+  let ok = true;
+  for (let i = 0; i < xs.length - 1; i++) {
+    const diff = Math.abs(xs[i] - xs[i + 1]);
+    if (diff < 1 || diff > 3) {
+      ok = false;
+      break;
+    }
+  }
+  return incOrDec && ok;
+}
+
+function getHowManyReportsAreSafeNewRules(
+  input: string = readInputFromFile("02")
+): number {
+  const lines: string[] = formatInputStringComplete(input);
+  let result = 0;
+
+  console.log({ lines });
+  for (const line of lines) {
+    const xs1 = line.split(" ").map(Number);
+    let good = false;
+    for (let j = 0; j < xs1.length; j++) {
+      const xs = [...xs1.slice(0, j), ...xs1.slice(j + 1)];
+      if (isGood(xs)) {
+        good = true;
+        break;
+      }
+    }
+
+    if (good) {
+      result += 1;
+    }
+  }
+
+  return result;
+}
+
+export { getHowManyReportsAreSafe, getHowManyReportsAreSafeNewRules };
