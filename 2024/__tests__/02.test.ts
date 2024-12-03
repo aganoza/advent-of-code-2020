@@ -17,7 +17,7 @@ const listOfEntries: [number, string][] = [
   [516, readInputFromFile("02")],
 ];
 
-test.skip.each(listOfEntries)("results in %i", (expected, entries) => {
+test.each(listOfEntries)("results in %i", (expected, entries) => {
   expect(getHowManyReportsAreSafe(entries)).toBe(expected);
 });
 
@@ -33,7 +33,7 @@ const listOfEntries2: [number, string][] = [
 8 6 4 4 1
 1 3 6 7 9`,
   ],
-  // [516, readInputFromFile("02")],
+  [561, readInputFromFile("02")],
 ];
 
 test.each(listOfEntries2)("results in %i", (expected, entries) => {

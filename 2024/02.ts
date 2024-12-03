@@ -65,7 +65,7 @@ function getHowManyReportsAreSafeNewRules(
   const lines: string[] = formatInputStringComplete(input);
   let result = 0;
 
-  console.log({ lines });
+  // console.log({ lines });
   for (const line of lines) {
     const xs1 = line.split(" ").map(Number);
     let good = false;
