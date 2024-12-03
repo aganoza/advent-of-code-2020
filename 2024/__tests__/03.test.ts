@@ -1,4 +1,7 @@
-import { sumMultiplicationsResults } from "../03";
+import {
+  sumMultiplicationsResults,
+  sumEnabledMultiplicationsResults,
+} from "../03";
 import { readInputFromFile } from "../utils";
 
 const listOfEntries: [number, string][] = [
@@ -11,4 +14,16 @@ const listOfEntries: [number, string][] = [
 
 test.each(listOfEntries)("results in %i", (expected, entries) => {
   expect(sumMultiplicationsResults(entries)).toBe(expected);
+});
+
+const listOfEntries2: [number, string][] = [
+  [
+    48,
+    `xmul(2,4)&mul[3,7]!^don't()_mul(5,5)+mul(32,64](mul(11,8)undo()?mul(8,5))`,
+  ],
+  [59097164, readInputFromFile("03")],
+];
+
+test.each(listOfEntries2)("results in %i", (expected, entries) => {
+  expect(sumEnabledMultiplicationsResults(entries)).toBe(expected);
 });
