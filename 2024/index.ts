@@ -1,5 +1,5 @@
-import * as main from "./03";
+import * as main from "./04";
 
-const result = main.sumEnabledMultiplicationsResults();
+const result = main.getHowManyTimesXMASAppear();
 
 console.log(`El resultado es ${result}`);
