@@ -21,7 +21,7 @@ MXMXAXMASX`,
   [2554, readInputFromFile("04")],
 ];
 
-test.skip.each(listOfEntries)("results in %i", (expected, entries) => {
+test.each(listOfEntries)("results in %i", (expected, entries) => {
   expect(getHowManyTimesXMASAppear(entries)).toBe(expected);
 });
 

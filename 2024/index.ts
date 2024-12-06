@@ -1,5 +1,5 @@
-import * as main from "./04";
+import * as main from "./05";
 
-const result = main.getHowManyTimesXdashMASAppear();
+const result = main.getSumMiddlePageNumberFromCorrectlyOrderedUpdates();
 
 console.log(`El resultado es ${result}`);
